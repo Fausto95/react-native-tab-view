@@ -1,23 +1,28 @@
-# react-native-tab-view
+# React Native Tab View
 
-Tab view
+> I built this when I hit a blocker with [react-native-tab-view](https://github.com/satya164/react-native-tab-view/) where nested tab views have some UI and performance issues. Note that my version of tab view does everything JS land.
 
 ## Installation
 
 ```sh
-npm install react-native-tab-view
+npm install @fausto95/react-native-tab-view
 ```
 
 ## Demo
 
 <img src="./demo/tabview.png" height="500px">
 
+## Supports
+
+- Scrollable tabs
+- Nested tab views
+
 ## Usage
 
 ```js
 import * as React from 'react';
 
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import { View, Text } from 'react-native';
 import { TabView } from '@fausto95/react-native-tab-view';
 
 const routes = [
