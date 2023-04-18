@@ -27,10 +27,8 @@ export function TabView({
 
   const onTabPress = React.useCallback(
     (index: number) => {
-      return () => {
-        setCurrentIndex(index);
-        onPress(index);
-      };
+      setCurrentIndex(index);
+      onPress(index);
     },
     [onPress]
   );
