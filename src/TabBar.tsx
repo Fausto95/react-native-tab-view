@@ -1,11 +1,6 @@
 import React from 'react';
 import { useState, useCallback } from 'react';
-import {
-  useWindowDimensions,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { useWindowDimensions, View, ScrollView, Pressable } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import type { RenderTabBar, Route } from './types';
 
@@ -60,9 +55,9 @@ export function TabBar({
           const isActive = index === currentIndex;
 
           return (
-            <TouchableOpacity onPress={onTabPress(index)} key={route.key}>
+            <Pressable onPress={onTabPress(index)} key={route.key}>
               {render({ route, isActive })}
-            </TouchableOpacity>
+            </Pressable>
           );
         })}
       </ScrollView>
