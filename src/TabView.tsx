@@ -12,6 +12,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   tabBarStyle?: StyleProp<ViewStyle>;
   tabBarContentContainerStyle?: StyleProp<ViewStyle>;
+  tabBarOverflowWitdth?: number;
 };
 
 export function TabView({
@@ -22,6 +23,7 @@ export function TabView({
   style,
   tabBarStyle,
   tabBarContentContainerStyle,
+  tabBarOverflowWitdth,
 }: Props) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
@@ -33,6 +35,10 @@ export function TabView({
     [onPress]
   );
 
+  const scene = React.useMemo(() => {
+    renderScene(routes[currentIndex] as Route);
+  }, [currentIndex, renderScene, routes]);
+
   return (
     <View style={[style]}>
       <TabBar
@@ -42,8 +48,9 @@ export function TabView({
         render={renderTabBar}
         contentConatinerStyle={tabBarContentContainerStyle}
         style={tabBarStyle}
+        overflowWitdth={tabBarOverflowWitdth}
       />
-      {renderScene(routes[currentIndex] as Route)}
+      {scene}
     </View>
   );
 }
