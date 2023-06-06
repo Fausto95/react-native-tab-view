@@ -11,6 +11,7 @@ type Props = {
   render: RenderTabBar;
   contentConatinerStyle?: StyleProp<ViewStyle>;
   style: StyleProp<ViewStyle>;
+  overflowWitdth?: number;
 };
 
 export function TabBar({
@@ -19,6 +20,7 @@ export function TabBar({
   onPress,
   render,
   contentConatinerStyle,
+  overflowWitdth,
   style,
 }: Props) {
   const [isScrollEnabled, setIsScrollEnabled] = useState(false);
@@ -33,13 +35,16 @@ export function TabBar({
 
   const onContentSizeChange = useCallback(
     (width: number) => {
-      if (containerWidth < width) {
+      if (
+        (overflowWitdth && overflowWitdth <= width) ||
+        containerWidth < width
+      ) {
         setIsScrollEnabled(true);
       } else {
         setIsScrollEnabled(false);
       }
     },
-    [containerWidth]
+    [containerWidth, overflowWitdth]
   );
 
   return (
@@ -55,7 +60,11 @@ export function TabBar({
           const isActive = index === currentIndex;
 
           return (
-            <Pressable onPress={onTabPress(index)} key={route.key}>
+            <Pressable
+              onPress={onTabPress(index)}
+              key={route.key}
+              testID={route.key}
+            >
               {render({ route, isActive })}
             </Pressable>
           );

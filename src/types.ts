@@ -11,4 +11,4 @@ export type Params = {
 };
 
 export type RenderTabBar = (params: Params) => ReactNode;
-export type RenderScene = (route: Route) => ReactNode;
+export type RenderScene = (route: Route) => JSX.Element | null;
