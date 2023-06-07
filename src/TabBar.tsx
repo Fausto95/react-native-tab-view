@@ -5,11 +5,11 @@ import type { StyleProp, ViewStyle } from 'react-native';
 import type { RenderTabBar, Route } from './types';
 
 type Props = {
-  routes: Route[];
+  routes: ReadonlyArray<Route>;
   currentIndex: number;
   onPress: (index: number) => void;
   render: RenderTabBar;
-  contentConatinerStyle?: StyleProp<ViewStyle>;
+  contentContainerStyle?: StyleProp<ViewStyle>;
   style: StyleProp<ViewStyle>;
   overflowWitdth?: number;
 };
@@ -19,7 +19,7 @@ export function TabBar({
   currentIndex,
   onPress,
   render,
-  contentConatinerStyle,
+  contentContainerStyle,
   overflowWitdth,
   style,
 }: Props) {
@@ -54,7 +54,7 @@ export function TabBar({
         showsHorizontalScrollIndicator={false}
         scrollEnabled={isScrollEnabled}
         onContentSizeChange={onContentSizeChange}
-        contentContainerStyle={contentConatinerStyle}
+        contentContainerStyle={contentContainerStyle}
       >
         {routes.map((route, index) => {
           const isActive = index === currentIndex;

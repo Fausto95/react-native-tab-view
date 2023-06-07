@@ -5,7 +5,7 @@ import type { StyleProp, ViewStyle } from 'react-native';
 import type { Route, RenderTabBar, RenderScene } from './types';
 
 type Props = {
-  routes: Route[];
+  routes: ReadonlyArray<Route>;
   onPress: (index: number) => void;
   renderTabBar: RenderTabBar;
   renderScene: RenderScene;
@@ -46,7 +46,7 @@ export function TabView({
         currentIndex={currentIndex}
         onPress={onTabPress}
         render={renderTabBar}
-        contentConatinerStyle={tabBarContentContainerStyle}
+        contentContainerStyle={tabBarContentContainerStyle}
         style={tabBarStyle}
         overflowWitdth={tabBarOverflowWitdth}
       />
